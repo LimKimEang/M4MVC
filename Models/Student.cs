@@ -15,4 +15,11 @@ namespace M4MVC.Models
         public Decimal Height { get; set; }
 
     }
+
+    //StudentDb is databaseName
+    public class StudentDb : DbContext
+    {
+        //<Student> is table in DB
+       public DbSet<Student> Students { get; set; }
+    }
 }

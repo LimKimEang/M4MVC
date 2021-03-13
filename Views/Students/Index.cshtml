@@ -1,0 +1,58 @@
+﻿<--!>IEnumerable is oject list</--!>
+
+@model IEnumerable<M4MVC.Models.Student>    
+
+
+@{
+    ViewBag.Title = "Student list";
+    Layout = "~/Views/Shared/_M4.cshtml";
+}
+
+<h2>Student List</h2>
+
+<p>
+    @Html.ActionLink("Create New Student", "Create")
+</p>
+
+<--!>Bootstrap code below</--!>
+
+<table class="table">
+    <tr>
+        <th>
+            Student Name
+        </th>
+        <th>
+           Sex
+        </th>
+        <th>
+           Birth Date
+        </th>
+        <th>
+           Height
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var student in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(s => student.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(s => student.sex)
+        </td>
+        <td>
+            @Html.DisplayFor(s => student.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(s => student.Height)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Info", "Edit", new { id=student.StudentID }) |
+            @Html.ActionLink("Details Info", "Details", new { id=student.StudentID }) |
+            @Html.ActionLink("Delete Info", "Delete", new { id=student.StudentID })
+        </td>
+    </tr>
+}
+
+</table>

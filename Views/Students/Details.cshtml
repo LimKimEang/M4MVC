@@ -1,0 +1,43 @@
+﻿@model M4MVC.Models.Student
+
+@{
+    ViewBag.Title = "Student Details";
+    Layout = "~/Views/Shared/_M4.cshtml";
+}
+
+<h2>Student details</h2>
+
+<div>
+    <h4>Information from student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>StudentName</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+        <dt>Sex</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex)
+        </dd>
+
+        <dt>DateOfBirth</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>Height</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Height)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
+    @Html.ActionLink("Back to Student List", "Index")
+</p>
