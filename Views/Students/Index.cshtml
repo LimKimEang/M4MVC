@@ -1,6 +1,6 @@
-﻿<--!>IEnumerable is oject list</--!>
+﻿<!--IEnumerable is oject list-->
 
-@model IEnumerable<M4MVC.Models.Student>    
+@model IEnumerable<M4MVC.Models.Student>
 
 
 @{
@@ -9,12 +9,23 @@
 }
 
 <h2>Student List</h2>
-
 <p>
     @Html.ActionLink("Create New Student", "Create")
 </p>
+    @*Create form then tranfer data to Index action of Students Controller*@
+    @using (Html.BeginForm("Index", "Students", FormMethod.Get)) {
+        <p>
+            @*Create Drop down list*@
+            BirthDate: @Html.DropDownList("yearBorn", "All");
 
-<--!>Bootstrap code below</--!>
+            @*Create TextBox and use SearchName as argument from user input in textbox to search*@
+           Student Name: @Html.TextBox("SearchName")
+            <input type="submit" value="Find"/>
+        </p>
+    }
+
+
+<!--Bootstrap code below-->
 
 <table class="table">
     <tr>
@@ -22,37 +33,38 @@
             Student Name
         </th>
         <th>
-           Sex
+            Sex
         </th>
         <th>
-           Birth Date
+            Birth Date
         </th>
         <th>
-           Height
+            Height
         </th>
         <th></th>
     </tr>
 
-@foreach (var student in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(s => student.StudentName)
-        </td>
-        <td>
-            @Html.DisplayFor(s => student.sex)
-        </td>
-        <td>
-            @Html.DisplayFor(s => student.BirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(s => student.Height)
-        </td>
-        <td>
-            @Html.ActionLink("Edit Info", "Edit", new { id=student.StudentID }) |
-            @Html.ActionLink("Details Info", "Details", new { id=student.StudentID }) |
-            @Html.ActionLink("Delete Info", "Delete", new { id=student.StudentID })
-        </td>
-    </tr>
-}
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(s => student.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(s => student.sex)
+            </td>
+            <td>
+                @Html.DisplayFor(s => student.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(s => student.Height)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Info", "Edit", new { id = student.StudentID }) |
+                @Html.ActionLink("Details Info", "Details", new { id = student.StudentID }) |
+                @Html.ActionLink("Delete Info", "Delete", new { id = student.StudentID })
+            </td>
+        </tr>
+    }
 
 </table>

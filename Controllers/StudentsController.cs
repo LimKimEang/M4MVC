@@ -12,13 +12,42 @@ namespace M4MVC.Controllers
 {
     public class StudentsController : Controller
     {
-        //private contextClas objectname = new contextClass(); Create a database object
+        //private contextClass objectname = new contextClass(); Create a database object
         private StudentDb db = new StudentDb();
 
         // GET: Students
-        public ActionResult Index()
+
+        public ActionResult Index(string yearBorn, string searchName)
         {
-            return View(db.Students.ToList()); //.ToList(); is method 
+            var yearLst = new List<string>(); //Create a List of yearLst to store BirthDate from Students with s
+                                                
+                                                
+            var yearQry = from s in db.Students
+                          orderby s.BirthDate   //then filter(orderby)
+                          select s.BirthDate.Year.ToString();   //then choose(select) only Year from Birthdate
+                                                                //and convert to string
+
+
+            yearLst.AddRange(yearQry.Distinct()); //Distinct()
+            ViewBag.yearBorn = new SelectList(yearLst); //in ViewBag create yearBorn property to store List of yearLst
+
+            var students = from s in db.Students // From Students with s will store data in variable students
+                         select s;
+
+            //if searchName have a value 
+            if (!String.IsNullOrEmpty(searchName))
+            {
+                //choose a student when user enter name in argument(searchName)
+                students = students.Where(s => s.StudentName.Contains(searchName));
+            }
+
+            if (!string.IsNullOrEmpty(yearBorn))
+            {
+                //Choose a student wtih the same argument(yearBorn)
+                students = students.Where(y => y.BirthDate.Year.ToString() == yearBorn);
+            }
+
+            return View(students);
         }
 
         // GET: Students/Details/5
@@ -61,7 +90,8 @@ namespace M4MVC.Controllers
         }
 
         // GET: Students/Edit/5
-        public ActionResult Edit(int? id)
+        //GET is method from HTML that allow data tranfer from client to server fast but not secure
+        public ActionResult Edit(int? id) //parameter is optional
         {
             if (id == null)
             {

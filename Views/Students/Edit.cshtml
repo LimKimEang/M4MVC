@@ -1,21 +1,21 @@
 ﻿@model M4MVC.Models.Student
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit student";
     Layout = "~/Views/Shared/_M4.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edit student</h2>
 
-
+<!--Html object create form-->
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()    <!--AntiForgeryToken() protect from scam data entry-->
     
     <div class="form-horizontal">
-        <h4>Student</h4>
+        <h4>Edit Student</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) <!--ValidationSummary show error message -->
         @Html.HiddenFor(model => model.StudentID)
 
         <div class="form-group">
