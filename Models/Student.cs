@@ -17,10 +17,13 @@ namespace M4MVC.Models
 
         //[Display(Name="Title")]
         [Display(Name="Birth Date")]
+
         [DataType(DataType.Date)]
+
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
         public Decimal Height { get; set; }
+        public string Telephone { get; set; }
 
     }
 

@@ -41,7 +41,10 @@
         <th>
             Height
         </th>
-        <th></th>
+        <th>
+            Telephone
+        </th>
+        
     </tr>
 
     @foreach (var student in Model)
@@ -60,9 +63,13 @@
                 @Html.DisplayFor(s => student.Height)
             </td>
             <td>
+                @Html.DisplayFor(s => student.Telephone)
+            </td>
+            <td>
                 @Html.ActionLink("Edit Info", "Edit", new { id = student.StudentID }) |
                 @Html.ActionLink("Details Info", "Details", new { id = student.StudentID }) |
                 @Html.ActionLink("Delete Info", "Delete", new { id = student.StudentID })
+                
             </td>
         </tr>
     }

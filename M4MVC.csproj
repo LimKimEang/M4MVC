@@ -133,6 +133,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103220120248_Initial.cs" />
+    <Compile Include="Migrations\202103220120248_Initial.Designer.cs">
+      <DependentUpon>202103220120248_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103220137367_Telephone.cs" />
+    <Compile Include="Migrations\202103220137367_Telephone.Designer.cs">
+      <DependentUpon>202103220137367_Telephone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,7 +193,14 @@
     <Content Include="Views\ActionResult\iView.cshtml" />
     <Content Include="Views\ActionResult\NotSpecifyViewName.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103220120248_Initial.resx">
+      <DependentUpon>202103220120248_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103220137367_Telephone.resx">
+      <DependentUpon>202103220137367_Telephone.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
