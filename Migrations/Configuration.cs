@@ -23,13 +23,15 @@ namespace M4MVC.Migrations
                 sex = "F",
                 BirthDate = DateTime.Parse("2001-1-21"),
                 Height = 1.6M,
+                Telephone="011 123456"
             },
             new Student
             {
                 StudentName = "Phy phally",
                 sex = "M",
                 BirthDate = DateTime.Parse("2000-2-22"),
-                Height = 1.71M
+                Height = 1.71M,
+                Telephone="012 123456"
             });
         }
     }
